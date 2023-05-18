@@ -17,8 +17,8 @@ TimeLimitedCache.prototype.set = function(key, value, duration) {
     if(cached){
         clearTimeout(cache[objKey].timeoutId);
     }
-    const ref = setTimeout(() => {delete cache[objKey]}, duration);
-    cache[objKey] = {value, timeoutId: ref};
+    const timeoutId = setTimeout(() => delete cache[objKey], duration);
+    cache[objKey] = {value, timeoutId};
     
     return cached;
 };
